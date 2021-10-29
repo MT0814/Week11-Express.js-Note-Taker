@@ -5,7 +5,6 @@
 Modified starter code to create an application called Note Taker that can be used to write, save and delete notes. This application will use an Express.js back end and will save, delete and retrieve note data from a JSON file.
 Built the back end, connect the font and back end, and then deploy the entire application to Heroku.
 
-
 ## User Story
 
 ```
@@ -13,7 +12,6 @@ AS A small business owner
 I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ```
-
 
 ## Acceptance Criteria
 
@@ -33,16 +31,6 @@ WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 ```
 
-
-## Mock-Up
-
-The following images show the web application's appearance and functionality:
-
-![Open Note Taker from Terminal](./Assets/11-express-homework-demo-01.png)
-
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
-
-
 ## Technology Used
 
 - Uses [Jest](https://www.npmjs.com/package/jest) for running the unit tests
@@ -52,20 +40,18 @@ The following images show the web application's appearance and functionality:
 node index.js
 ```
 
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ### Video
 
 - Open Note Taker from Terminal (Please click screenshot to watch the video)
-  [![Open Note Taker from Terminal](./assets/screenshot-team-profile.png)]( https://drive.google.com/file/d/1XrCZydU7ZFI2-lClidNZlCayCqAakr8R/view?usp=sharing)
+  [![Open Note Taker from Terminal](./assets/Note-taker-terminal.png)](https://drive.google.com/file/d/1XrCZydU7ZFI2-lClidNZlCayCqAakr8R/view?usp=sharing)
 
-- Run Test Demo (Please click screenshot to watch the video)
-  [![Note Taker Demo](./assets/screenshot-run-test.png)](https://drive.google.com/file/d/1cBc2dPi2Z77Qn_B8YNbfDKy_bGZlCg9K/view?usp=sharing)
+- Note Taker Browser and Demo (Please click screenshot to watch the video)
+  [![Note Taker Demo](./assets/Note-taker.png)](https://drive.google.com/file/d/1cBc2dPi2Z77Qn_B8YNbfDKy_bGZlCg9K/view?usp=sharing)
 
-### Screenshot
+---
 
-- Landscape Mode
-  ![Team Profile screenshot](./assets/team-profile-website.png)
-
-- Portrait Mode
-  ![Team Profile screenshot](./assets/team-profile-website2.png)
-- - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
