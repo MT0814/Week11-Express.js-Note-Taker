@@ -17,11 +17,12 @@ app.use(express.static('public'));
 const readFromFile = util.promisify(fs.readFile);
 
 
-const writeToFile = (destination, content) =>
-    fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
+const writeToFile = (destination, content) => {
+    fs.writeFile(destination, JSON.stringify(content, null, 4), (err) => {
         err ? console.error(err) : console.info(`\nData written to ${destination}`)
-    );
+    });
 
+};
 
 const readAndAppend = (content, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
@@ -36,17 +37,21 @@ const readAndAppend = (content, file) => {
 };
 
 
-// GET Route for retrieving all the tips
+
+
+// GET Route for retrieving all the notes
 app.get('/api/notes', (req, res) => {
-    console.info(`${req.method} request received for tips`);
+    console.info(`${req.method} request received for notes`);
+     // Read the db.json file and return all saved notes as JSON.
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 
-// POST Route for a new UX/UI tip
+
+// POST Route for a new note
 app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a note`);
-
+     // Receives a new note, adds it to db.json, then returns the new note
     const { title, text } = req.body
 
     if (req.body) {
@@ -64,17 +69,39 @@ app.post('/api/notes', (req, res) => {
 });
 
 
+// Deletes a note with specific id
+app.delete("/api/notes/:id", function(req, res) {
+    readFromFile('./db/db.json').then((data) => {
+        const notes = JSON.parse(data)
+        const newNotes = notes.filter((note) => {
+            return note.id !== req.params.id
+
+        })
+        writeToFile('./db/db.json', newNotes) 
+        res.json(newNotes)
+        console.log("Deleted note with id "+req.params.id);
+    })
+  
+});
+
+
 app.get('/notes', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/notes.html'))
+    res.sendFile(path.join(__dirname, './public/notes.html'))
 );
 
-// app.get('/*', (req, res) =>
-//     res.sendFile(path.join(__dirname, '/public/index.html'))
-// );
 
 app.get('/', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/index.html'))
+    res.sendFile(path.join(__dirname, './public/index.html'))
 );
+
+
+
+//updates the json file whenever a note is added or deleted
+function updateDb() {
+    fs.writeFile(destination, JSON.stringify(content, null, 4), (err) => {
+        err ? console.error(err) : console.info(`\nData written to ${destination}`)
+     });
+}
 
 
 
@@ -82,3 +109,5 @@ app.get('/', (req, res) =>
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT} 🚀`)
 })
+
+
